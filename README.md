@@ -19,7 +19,7 @@ CalitoyCorp is the holding company across the portfolio. This site provides a cl
 
 ## Merch
 
-`merch.html` is the shared CalitoyCorp merchandise directory. It shows real defined Calitoy and Kurced products, reserves a clear CalitoyCorp-owned goods lane, and routes every portfolio property to its own merchandise path or inquiry until shared secure checkout is implemented.
+`merch.html` is the shared CalitoyCorp merchandise directory. It shows real defined Calitoy and Kurced products, reserves a clear CalitoyCorp-owned goods lane, and routes every portfolio property to its own merchandise path or inquiry until shared secure checkout is implemented. The Product Lab adds 80 clearly marked proposed drops: ten product directions for each portfolio property.
 
 ## Deployment
 
