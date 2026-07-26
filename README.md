@@ -17,6 +17,10 @@ CalitoyCorp is the holding company across the portfolio. This site provides a cl
 - Wicked Youth Goods — skin products with flare
 - CalitoyCamp — education and mentoring platform
 
+## Merch
+
+`merch.html` is the shared CalitoyCorp merchandise directory. It shows real defined Calitoy and Kurced products, reserves a clear CalitoyCorp-owned goods lane, and routes every portfolio property to its own merchandise path or inquiry until shared secure checkout is implemented.
+
 ## Deployment
 
 This is a static site with no build step, APIs, or environment variables. Publish the repository root to the chosen static host once the CalitoyCorp repository and domain are configured.
