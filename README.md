@@ -1,10 +1,10 @@
-# CalitoyCore
+# CalitoyCorp
 
-The independent static holding-company site for **CalitoyCore**.
+The independent static holding-company site for **CalitoyCorp** *(pronounced “Calitoy Core”)*.
 
 ## Purpose
 
-CalitoyCore is the holding company across the portfolio. This site provides a clear, corporate-level home for the ventures while allowing each brand to keep its own audience, visual identity, and product experience.
+CalitoyCorp is the holding company across the portfolio. This site provides a clear, corporate-level home for the ventures while allowing each brand to keep its own audience, visual identity, and product experience.
 
 ## Portfolio currently represented
 
@@ -19,4 +19,4 @@ CalitoyCore is the holding company across the portfolio. This site provides a cl
 
 ## Deployment
 
-This is a static site with no build step, APIs, or environment variables. Publish the repository root to the chosen static host once the CalitoyCore repository and domain are configured.
+This is a static site with no build step, APIs, or environment variables. Publish the repository root to the chosen static host once the CalitoyCorp repository and domain are configured.
