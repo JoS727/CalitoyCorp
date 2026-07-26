@@ -15,6 +15,7 @@ CalitoyCore is the holding company across the portfolio. This site provides a cl
 - Calitoy Cues
 - Calitoy Customs
 - Wicked Youth Goods — skin products with flare
+- CalitoyCamp — education and mentoring platform
 
 ## Deployment
 
