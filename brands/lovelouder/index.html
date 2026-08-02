@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Louder | Official Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A227;
+      --gold-dark: #8B7355;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --cream: #F5F5DC;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+    
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .logo img {
+      height: 50px;
+    }
+    
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    .nav a:hover { color: var(--gold); }
+    
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    
+    .nav a:hover::after { width: 100%; }
+    
+    .cart-btn {
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .cart-btn:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,162,39,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-crest {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 2rem;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: var(--gold);
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+    
+    .pillars {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .pillar {
+      text-align: center;
+    }
+    
+    .pillar-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pillar-text {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 3rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .cta-btn:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(201,162,39,0.3);
+    }
+    
+    /* Products Section */
+    .products {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+      color: rgba(255,255,255,0.6);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .product-card {
+      background: #141414;
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    
+    .product-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+    }
+    
+    .product-image {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .product-image img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+    
+    .product-info {
+      padding: 1.5rem;
+    }
+    
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .product-description {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1rem;
+    }
+    
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    
+    .product-colors {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    
+    .color-swatch.active {
+      border-color: var(--gold);
+    }
+    
+    .color-swatch.black { background: #000; }
+    .color-swatch.white { background: #fff; }
+    .color-swatch.cream { background: #F5F5DC; }
+    
+    .add-to-cart {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .add-to-cart:hover {
+      background: var(--white);
+    }
+    
+    /* Footer */
+    .footer {
+      background: #0a0a0a;
+      border-top: 1px solid rgba(201,162,39,0.2);
+      padding: 4rem 2rem 2rem;
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+    }
+    
+    .footer-col h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+    
+    .footer-col a:hover { color: var(--gold); }
+    
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201,162,39,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--white);
+      font-size: 1.25rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover { color: var(--gold); }
+    
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .pillars { flex-direction: column; gap: 1rem; }
+      .footer-content { grid-template-columns: 1fr; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-text"> LOVE LOUDER</div>
+      </div>
+      <nav class="nav">
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#cart" class="cart-btn">Cart (0)</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-crest">🌹</div>
+      <h1>Love Louder</h1>
+      <p class="hero-tagline">Premium emotional streetwear for the consciously awake</p>
+      
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">❤️</div>
+          <div class="pillar-text">LOVE LOUDER</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">✨</div>
+          <div class="pillar-text">LIVE LOUDER</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌙</div>
+          <div class="pillar-text">FEEL LOUDER</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">✝</div>
+          <div class="pillar-text">HEAL LOUDER</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">⭐</div>
+          <div class="pillar-text">CREATE LOUDER</div>
+        </div>
+      </div>
+      
+      <a href="#shop" class="cta-btn">Shop Collection</a>
+    </div>
+  </section>
+
+  <section class="products" id="shop">
+    <div class="section-header">
+      <h2>The Collection</h2>
+      <p>Each piece designed to carry the message. Gold foil prints on premium heavyweight cotton.</p>
+    </div>
+    
+    <div class="product-grid" id="productGrid">
+      <!-- Products loaded dynamically -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>Love Louder</h3>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">
+          Premium emotional streetwear. Built by CalitoyCorp.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Shop</h3>
+        <a href="#">All Products</a>
+        <a href="#">T-Shirts</a>
+        <a href="#">Hoodies</a>
+        <a href="#">Accessories</a>
+      </div>
+      <div class="footer-col">
+        <h3>Support</h3>
+        <a href="#">FAQ</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h3>Connect</h3>
+        <a href="#">@lovelouder</a>
+        <a href="#">lovelouder.com</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p style="color: rgba(255,255,255,0.4);">© 2026 Love Louder. A CalitoyCorp Brand.</p>
+      <div class="social-links">
+        <a href="#">📷</a>
+        <a href="#">🎵</a>
+        <a href="#">🐦</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../admin/data/merch-database-v2.js"></script>
+  <script>
+    // Load Love Louder products
+    const products = BRAND_PRODUCT_LINES.lovelouder;
+    const grid = document.getElementById('productGrid');
+    
+    grid.innerHTML = products.map(product => `
+      <div class="product-card">
+        <div class="product-image">
+          <div style="font-size: 6rem; color: var(--gold);">🌹</div>
+          <span class="product-badge">${product.status === 'approved' ? 'IN STOCK' : 'PRE-ORDER'}</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-description">${product.design}</p>
+          <div class="product-price">$${product.price.toFixed(2)}</div>
+          <div class="product-colors">
+            ${product.colors.map(color => `
+              <div class="color-swatch ${color.toLowerCase()} ${color === product.colors[0] ? 'active' : ''}"></div>
+            `).join('')}
+          </div>
+          <button class="add-to-cart" onclick="addToCart('${product.id}')">Add to Cart</button>
+        </div>
+      </div>
+    `).join('');
+    
+    function addToCart(productId) {
+      alert(`Added ${productId} to cart!\n\nThis would connect to Printful for fulfillment.`);
+    }
+  </script>
+</body>
+</html>
