@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarosyn | Official Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #4A1A6B;
-      --accent: #C9A227;
+      --purple: #4A1A6B;
+      --purple-light: #6B2C91;
+      --gold: #C9A227;
+      --gold-light: #E8D5A3;
       --black: #0A0A0A;
       --white: #FFFFFF;
-      --grey: #1A1A1A;
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,10 +28,10 @@
     .header {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: rgba(10,10,10,0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(20px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(201,162,39,0.2);
     }
     
     .header-content {
@@ -46,43 +47,69 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      font-family: 'Cinzel', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
     }
     
-    .logo-icon { font-size: 2rem; }
+    .logo-crest {
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(201,162,39,0.1) 0%, transparent 70%);
+    }
+    
+    .logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 6px;
+    }
     
     .nav {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     
     .nav a {
       color: var(--white);
       text-decoration: none;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 400;
+      letter-spacing: 2px;
       transition: color 0.3s;
     }
     
-    .nav a:hover { color: var(--accent); }
+    .nav a:hover { color: var(--gold); }
     
     .cart-btn {
-      background: var(--accent);
-      color: var(--black);
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
       padding: 0.75rem 1.5rem;
       border-radius: 4px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+      letter-spacing: 2px;
+      transition: all 0.3s;
+    }
+    
+    .cart-btn:hover {
+      background: var(--gold);
+      color: var(--black);
     }
     
     .hero {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--black) 0%, var(--primary) 100%);
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(180deg, var(--black) 0%, #0a0a1a 50%, var(--black) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -90,81 +117,80 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(201,162,39,0.2) 0%, transparent 70%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(74,26,107,0.2) 0%, transparent 60%);
       pointer-events: none;
     }
     
-    .hero-content {
-      text-align: center;
-      max-width: 800px;
-      padding: 2rem;
+    .hero-crest {
+      width: 300px;
+      height: 300px;
+      margin-bottom: 2rem;
       position: relative;
-      z-index: 1;
-    }
-    
-    .hero-icon {
-      font-size: 6rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 50px var(--accent);
     }
     
     .hero h1 {
-      font-family: 'Cinzel', sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      letter-spacing: 8px;
       margin-bottom: 1rem;
-      color: var(--accent);
-      text-shadow: 0 0 30px rgba(201,162,39,0.5);
+      color: var(--gold);
     }
     
     .hero-tagline {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 3rem;
+      max-width: 500px;
+      font-weight: 300;
+      letter-spacing: 2px;
     }
     
     .pillars {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 4rem;
     }
     
     .pillar {
       text-align: center;
       padding: 1rem;
-      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,162,39,0.2);
       border-radius: 8px;
-      border: 1px solid rgba(201,162,39,0.3);
+      background: rgba(74,26,107,0.2);
     }
     
     .pillar-text {
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--accent);
-      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--gold);
+      font-weight: 500;
     }
     
     .cta-btn {
       display: inline-block;
-      background: var(--accent);
-      color: var(--black);
-      padding: 1rem 3rem;
-      font-size: 1rem;
-      font-weight: 700;
+      background: transparent;
+      color: var(--gold);
+      padding: 1.25rem 3rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 3px;
       text-decoration: none;
       border-radius: 4px;
       transition: all 0.3s;
+      border: 2px solid var(--gold);
     }
     
     .cta-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(201,162,39,0.4);
+      background: var(--gold);
+      color: var(--black);
     }
     
     .products {
@@ -179,246 +205,71 @@
     }
     
     .section-header h2 {
-      font-family: 'Cinzel', sans-serif;
-      font-size: 3rem;
-      color: var(--accent);
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
       margin-bottom: 1rem;
+      letter-spacing: 6px;
     }
     
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2.5rem;
     }
     
     .product-card {
-      background: var(--grey);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #0a0a1a;
+      border: 1px solid rgba(201,162,39,0.15);
       border-radius: 8px;
       overflow: hidden;
-      transition: all 0.3s;
+      transition: all 0.4s ease;
     }
     
     .product-card:hover {
-      border-color: var(--accent);
+      border-color: var(--gold);
       transform: translateY(-5px);
     }
     
     .product-image {
       aspect-ratio: 1;
-      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
-    }
-    
-    .product-info {
-      padding: 1.5rem;
-    }
-    
-    .product-name {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
     }
     
     .product-price {
       font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent);
+      font-weight: 600;
+      color: var(--gold);
       margin-bottom: 1rem;
     }
     
     .add-to-cart {
       width: 100%;
-      background: var(--accent);
-      color: var(--black);
-      border: none;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
       padding: 1rem;
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
       cursor: pointer;
       border-radius: 4px;
-    }
-    
-    .footer {
-      background: var(--black);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .social-links a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 1.25rem;
-    }
-    
-    .social-links a:hover { color: var(--accent); }
-    
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .pillars { flex-direction: column; }
-      .nav { display: none; }
-    }
-  </style>
-
-  <link rel="stylesheet" href="../../assets/css/product-mockups.css">
-  <script src="../../admin/data/expanded-products.js"></script>
-  <style>
-    /* Product grid improvements */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-    }
-    
-    .product-card {
-      background: var(--grey, #1A1A1A);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .product-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-    
-    .product-info {
-      padding: 1.5rem;
-    }
-    
-    .product-meta {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .product-tag {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.5rem;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      color: rgba(255,255,255,0.7);
-    }
-    
-    .color-options {
-      display: flex;
-      gap: 0.5rem;
-      margin: 0.75rem 0;
-    }
-    
-    .color-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      cursor: pointer;
-    }
-    
-    .color-dot:hover,
-    .color-dot.active {
-      border-color: var(--accent);
-    }
-    
-    .add-to-cart {
-      width: 100%;
-      padding: 1rem;
-      background: var(--accent);
-      color: var(--black, #000);
-      border: none;
-      font-weight: 700;
-      cursor: pointer;
       transition: all 0.3s;
     }
     
     .add-to-cart:hover {
-      filter: brightness(1.2);
-      transform: scale(1.02);
-    }
-    
-    /* Filter bar */
-    .filter-bar {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .filter-btn {
-      padding: 0.5rem 1rem;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--white);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--accent);
+      background: var(--gold);
       color: var(--black);
-      border-color: var(--accent);
-    }
-  </style>
-
-  <style>
-    .product-image-container {
-      position: relative;
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      cursor: pointer;
     }
     
-    .product-image-container img {
-      width: 80%;
-      height: 80%;
-      object-fit: contain;
-      transition: transform 0.3s;
-    }
-    
-    .product-image-container:hover img {
-      transform: scale(1.05);
-    }
-    
-    .product-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    
-    .product-image-container:hover .product-overlay {
-      opacity: 1;
-    }
-    
-    .product-overlay span {
-      color: white;
-      font-weight: 600;
-      padding: 10px 20px;
-      border: 2px solid white;
-      border-radius: 4px;
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero-crest { width: 220px; height: 220px; }
+      .pillars { flex-direction: column; gap: 1rem; }
+      .nav { display: none; }
     }
   </style>
 </head>
@@ -426,70 +277,127 @@
   <header class="header">
     <div class="header-content">
       <div class="logo">
-        <span class="logo-icon">🌙</span>
-        <span>Tarosyn</span>
+        <div class="logo-crest">
+          <svg viewBox="0 0 100 100" width="40" height="40">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#C9A227" stroke-width="2"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#4A1A6B" stroke-width="1"/>
+            <text x="50" y="25" text-anchor="middle" fill="#C9A227" font-size="8" font-family="serif" letter-spacing="2">TAROSYN</text>
+            <circle cx="50" cy="55" r="15" fill="none" stroke="#C9A227" stroke-width="1.5"/>
+            <path d="M50 40 L50 30" stroke="#C9A227" stroke-width="1"/>
+            <path d="M50 70 L50 80" stroke="#C9A227" stroke-width="1"/>
+            <path d="M35 55 L25 55" stroke="#C9A227" stroke-width="1"/>
+            <path d="M65 55 L75 55" stroke="#C9A227" stroke-width="1"/>
+            <circle cx="50" cy="55" r="4" fill="#C9A227"/>
+          </svg>
+        </div>
+        <div class="logo-text">TAROSYN</div>
       </div>
       <nav class="nav">
         <a href="#shop">Shop</a>
         <a href="#about">About</a>
+        <a href="#pillars">Pillars</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a href="#cart" class="cart-btn">Cart (0)</a>
+      <a href="#cart" class="cart-btn">CART (0)</a>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-icon">🌙</div>
-      <h1>Tarosyn</h1>
-      <p class="hero-tagline">You're A Star. Design Your Destiny. Know Your Story. Trust The Cosmos. Leave Your Mark.</p>
-      
-      <div class="pillars">
-        <div class="pillar"><div class="pillar-text">YOU'RE A STAR</div></div>
-<div class="pillar"><div class="pillar-text">DESIGN YOUR DESTINY</div></div>
-<div class="pillar"><div class="pillar-text">KNOW YOUR STORY</div></div>
-<div class="pillar"><div class="pillar-text">TRUST THE COSMOS</div></div>
-<div class="pillar"><div class="pillar-text">LEAVE YOUR MARK</div></div>
-      </div>
-      
-      <a href="#shop" class="cta-btn">Shop Collection</a>
+    <div class="hero-crest">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="nebulaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#6B2C91"/>
+            <stop offset="50%" style="stop-color:#4A1A6B"/>
+            <stop offset="100%" style="stop-color:#1a0a2e"/>
+          </linearGradient>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#E8D5A3"/>
+            <stop offset="50%" style="stop-color:#C9A227"/>
+            <stop offset="100%" style="stop-color:#8B7355"/>
+          </linearGradient>
+        </defs>
+        
+        <circle cx="100" cy="100" r="95" fill="none" stroke="url(#nebulaGrad)" stroke-width="3"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#C9A227" stroke-width="1"/>
+        
+        <text x="100" y="35" text-anchor="middle" fill="url(#goldGrad)" font-size="16" font-family="serif" letter-spacing="6">TAROSYN</text>
+        
+        <circle cx="100" cy="100" r="35" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+        <path d="M100 65 L100 50" stroke="url(#goldGrad)" stroke-width="2"/>
+        <path d="M100 135 L100 150" stroke="url(#goldGrad)" stroke-width="2"/>
+        <path d="M65 100 L50 100" stroke="url(#goldGrad)" stroke-width="2"/>
+        <path d="M135 100 L150 100" stroke="url(#goldGrad)" stroke-width="2"/>
+        <circle cx="100" cy="100" r="6" fill="url(#goldGrad)"/>
+        
+        <path d="M100 75 C110 85, 110 95, 100 100" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+        <path d="M100 100 C90 110, 90 120, 100 125" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+        
+        <text x="35" y="100" fill="url(#goldGrad)" font-size="10">✦</text>
+        <text x="160" y="100" fill="url(#goldGrad)" font-size="10">✦</text>
+        <text x="100" y="175" text-anchor="middle" fill="url(#goldGrad)" font-size="8" font-family="sans-serif" letter-spacing="2">COSMIC</text>
+      </svg>
     </div>
+    <h1>TAROSYN</h1>
+    <p class="hero-tagline">Mystical objects. Modern rituals. Design your destiny.</p>
+    
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-text">YOU'RE A STAR</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-text">DESIGN YOUR DESTINY</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-text">KNOW YOUR STORY</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-text">TRUST THE COSMOS</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-text">LEAVE YOUR MARK</div>
+      </div>
+    </div>
+    
+    <a href="#shop" class="cta-btn">EXPLORE THE COSMOS</a>
   </section>
 
   <section class="products" id="shop">
     <div class="section-header">
       <h2>The Collection</h2>
+      <p>Celestial streetwear for the spiritually awakened.</p>
     </div>
+    
     <div class="product-grid" id="productGrid"></div>
   </section>
 
-  <footer class="footer">
-    <div class="social-links">
-      <a href="https://instagram.com/tarosyn">📷 Instagram</a>
-      <a href="https://tiktok.com/tarosyn">🎵 TikTok</a>
-      <a href="https://tarosyn.com">🌐 Website</a>
-    </div>
-    <p style="color: rgba(255,255,255,0.4);">© 2026 Tarosyn. A CalitoyCorp Brand.</p>
-  </footer>
-
   <script src="../../admin/data/merch-database-v2.js"></script>
+  <script src="../../admin/data/expanded-products.js"></script>
   <script>
-    const products = BRAND_PRODUCT_LINES['tarosyn'];
+    const products = EXPANDED_PRODUCTS['tarosyn'] || BRAND_PRODUCT_LINES['tarosyn'];
     const grid = document.getElementById('productGrid');
     
-    grid.innerHTML = products.map(p => `
+    grid.innerHTML = products.slice(0, 6).map(product => `
       <div class="product-card">
-        <div class="product-image">🌙</div>
-        <div class="product-info">
-          <h3 class="product-name">${p.name}</h3>
-          <div class="product-price">$${p.price.toFixed(2)}</div>
-          <button class="add-to-cart" onclick="addToCart('${p.id}')">Add to Cart</button>
+        <div class="product-image">
+          <svg viewBox="0 0 200 200" style="max-width: 80%; max-height: 80%;">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#C9A227" stroke-width="2"/>
+            <text x="100" y="40" text-anchor="middle" fill="#C9A227" font-size="16" font-family="serif">TAROSYN</text>
+            <circle cx="100" cy="100" r="30" fill="none" stroke="#C9A227" stroke-width="2"/>
+            <text x="100" y="145" text-anchor="middle" fill="#C9A227" font-size="10" font-family="sans-serif">COSMIC</text>
+          </svg>
+        </div>
+        <div class="product-info" style="padding: 1.5rem;">
+          <h3 style="font-family: Cinzel, serif; font-size: 1.1rem; margin-bottom: 0.5rem;">${product.name}</h3>
+          <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem;">${product.design}</p>
+          <div class="product-price">$${product.price.toFixed(2)}</div>
+          <button class="add-to-cart" onclick="addToCart('${product.id}')">ADD TO CART</button>
         </div>
       </div>
     `).join('');
     
-    function addToCart(id) {
-      alert('Added to cart! Checkout with Stripe coming soon.');
+    function addToCart(productId) {
+      alert(`Added ${productId} to cart!`);
     }
   </script>
 </body>
