@@ -374,6 +374,53 @@
       border-color: var(--accent);
     }
   </style>
+
+  <style>
+    .product-image-container {
+      position: relative;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .product-image-container img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+    
+    .product-image-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    .product-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .product-image-container:hover .product-overlay {
+      opacity: 1;
+    }
+    
+    .product-overlay span {
+      color: white;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
   <header class="header">
