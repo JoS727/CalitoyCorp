@@ -3,7 +3,7 @@
 // Payment processing for all brand storefronts
 // ============================================================
 
-const STRIPE_PUBLIC_KEY = 'pk_test_YOUR_STRIPE_PUBLIC_KEY'; // Replace with your key
+const STRIPE_PUBLIC_KEY = 'pk_live_51Svpn87bqUIvce1RUiUM6v2XgnXLWQwd1HsfE1RXyPn032tZuX8AChcLDiZq0wyVDjqWzsM2SQ1r2fGr9Ywd8v0600F8dAz2bf';
 
 // Initialize Stripe
 let stripe = null;
