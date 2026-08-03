@@ -8,25 +8,26 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #050505;
-    --red: #15803d;
+    --accent: #15803d;
+    --purple: #7c3aed;
     --gold: #ca8a04;
     --white: #ffffff;
     --card-bg: #0d0d0d;
-    --border: #2a0a0a;
+    --border: #1a2a1a;
   }
   body { background: var(--bg); color: var(--white); font-family: 'Impact', 'Arial Black', sans-serif; min-height: 100vh; }
 
   nav {
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.2rem 2rem; background: #000;
-    border-bottom: 2px solid var(--red);
+    border-bottom: 2px solid var(--accent);
     position: sticky; top: 0; z-index: 100;
   }
   .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
   .nav-logo img { height: 44px; }
-  .nav-logo span { font-size: 1.4rem; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-logo span { font-size: 1.4rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
   .cart-btn {
-    background: var(--red); color: #fff; border: none;
+    background: var(--purple); color: #fff; border: none;
     padding: 0.5rem 1.2rem; border-radius: 4px; cursor: pointer;
     font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;
     font-family: inherit;
@@ -37,21 +38,21 @@
   .hero {
     text-align: center; padding: 4rem 2rem 3rem;
     background: linear-gradient(180deg, #1a0000 0%, var(--bg) 70%);
-    border-bottom: 3px solid var(--red);
+    border-bottom: 3px solid var(--accent);
   }
   .hero-logo { max-width: 180px; margin: 0 auto 1.5rem; display: block; }
   .hero h1 {
     font-size: clamp(2.5rem, 7vw, 5rem); color: var(--white);
     letter-spacing: 0.06em; text-transform: uppercase;
-    text-shadow: 3px 3px 0 var(--red), -1px -1px 0 #000;
+    text-shadow: 3px 3px 0 var(--accent), -1px -1px 0 #000;
   }
-  .hero h1 span { color: var(--red); }
+  .hero h1 span { color: var(--accent); }
   .hero p { color: #aaa; margin-top: 0.75rem; font-size: 1rem; font-family: Arial, sans-serif; letter-spacing: 0.05em; }
   .crown-row { font-size: 1.8rem; margin-bottom: 0.75rem; }
 
   .section-title {
     text-align: center; padding: 2rem 1rem 1rem;
-    font-size: 1rem; color: var(--red); text-transform: uppercase; letter-spacing: 0.3em;
+    font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.3em;
     font-family: Arial, sans-serif;
   }
   .grid {
@@ -66,7 +67,7 @@
     transition: transform 0.2s, border-color 0.2s;
     display: flex; flex-direction: column;
   }
-  .card:hover { transform: translateY(-4px); border-color: var(--red); box-shadow: 0 0 20px rgba(21,128,61,0.3); }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 0 20px rgba(21,128,61,0.3); }
   .card-img {
     background: linear-gradient(135deg, #1a0000 0%, #0d0d0d 100%);
     padding: 2rem; display: flex; align-items: center; justify-content: center;
@@ -75,52 +76,52 @@
   .card-img img { max-width: 130px; max-height: 130px; object-fit: contain; }
   .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
   .card-name { font-size: 1.05rem; color: var(--white); text-transform: uppercase; letter-spacing: 0.06em; }
-  .card-price { font-size: 1.4rem; color: var(--red); }
+  .card-price { font-size: 1.4rem; color: var(--accent); }
   .size-select {
     background: #1a0000; border: 1px solid var(--border); color: var(--white);
     padding: 0.4rem 0.6rem; border-radius: 4px; width: 100%; font-size: 0.9rem; cursor: pointer;
     font-family: Arial, sans-serif;
   }
   .add-btn {
-    margin-top: auto; background: var(--red); color: #fff;
+    margin-top: auto; background: var(--purple); color: #fff;
     border: none; padding: 0.7rem; border-radius: 6px; cursor: pointer;
     font-size: 1rem; font-weight: 700; transition: background 0.2s;
     text-transform: uppercase; letter-spacing: 0.08em; font-family: inherit;
   }
-  .add-btn:hover { background: #b91c1c; }
+  .add-btn:hover { background: #6d28d9; }
 
   .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 200; }
   .cart-overlay.open { display: block; }
   .cart-drawer {
     position: fixed; right: 0; top: 0; bottom: 0; width: 360px; max-width: 95vw;
-    background: #0d0d0d; border-left: 2px solid var(--red);
+    background: #0d0d0d; border-left: 2px solid var(--accent);
     z-index: 300; display: flex; flex-direction: column; transform: translateX(100%);
     transition: transform 0.3s;
   }
   .cart-drawer.open { transform: translateX(0); }
   .cart-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .cart-header h2 { color: var(--red); font-size: 1.2rem; }
+  .cart-header h2 { color: var(--accent); font-size: 1.2rem; }
   .close-cart { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
   .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
   .cart-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; font-family: Arial, sans-serif; }
   .cart-item-name { color: var(--white); }
-  .cart-item-price { color: var(--red); }
+  .cart-item-price { color: var(--accent); }
   .cart-empty { color: #555; text-align: center; margin-top: 2rem; font-family: Arial, sans-serif; }
   .cart-footer { padding: 1.2rem 1.5rem; border-top: 1px solid var(--border); }
   .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; font-family: Arial, sans-serif; }
-  .cart-total span:last-child { color: var(--red); font-weight: 700; }
+  .cart-total span:last-child { color: var(--accent); font-weight: 700; }
   .checkout-btn {
-    width: 100%; background: var(--red); color: #fff; border: none;
+    width: 100%; background: var(--purple); color: #fff; border: none;
     padding: 0.9rem; border-radius: 6px; font-size: 1rem; font-weight: 700;
     cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em; font-family: inherit;
   }
 
   footer {
     text-align: center; padding: 2.5rem 1rem;
-    border-top: 3px solid var(--red); background: #000;
+    border-top: 3px solid var(--accent); background: #000;
     color: #888; font-family: Arial, sans-serif;
   }
-  footer strong { color: var(--red); }
+  footer strong { color: var(--accent); }
   footer a { color: var(--gold); text-decoration: none; }
 
   @media (max-width: 600px) {
