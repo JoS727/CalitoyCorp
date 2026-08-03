@@ -1,114 +1,195 @@
-const merchConcepts = [
-  ...[
-    ['Major Arcana Candle Set','Candle collection','Twelve dark-glass archetype candles with celestial label art.'],
-    ['Birth Chart Ritual Journal','Guided journal','Midnight linen cover with constellation mapping and reflective prompts.'],
-    ['Moon Phase Silk Scarf','Accessory','Tonal lunar-cycle square with a star-field border.'],
-    ['Seeker Tarot Cloth','Altar accessory','Velvet reading cloth with an embroidered sun and zodiac edge.'],
-    ['Celestial Transit Tee','Apparel','Washed black tee with a minimal transit diagram across the back.'],
-    ['Tarot Symbol Pin Series','Pin set','Moon, tower, sun, and star icons in metal.'],
-    ['Zodiac Art Print Set','Print set','Twelve moody graphic zodiac illustrations for altar walls.'],
-    ['Mercury Retrograde Notebook','Stationery','Compact dot-grid notebook with cosmic warning graphics.'],
-    ['Cosmic Correspondence Stickers','Sticker pack','Mystical icons, planets, hands, crystals, and type.'],
-    ['Night Sky Hoodie','Apparel','Oversized charcoal hoodie with sparse constellation work.']
-  ].map(([name,type,direction]) => ({brand:'Tarosyn',name,type,direction})),
-  ...[
-    ['Xcalitoy World Tee','Apparel','Heavy black tee with a cinematic world-building back graphic.'],
-    ['After Hours Hoodie','Apparel','Faded charcoal pullover with nocturnal oversized artwork.'],
-    ['Signal From Somewhere Poster','Art print','Grainy transmission-style visual in a minimal layout.'],
-    ['Archive Logo Cap','Headwear','Low-profile black cap with tonal embroidered lettering.'],
-    ['Night Drive Tote','Accessory','Black canvas with a reflective silver line graphic.'],
-    ['Static Sticker Sheet','Sticker pack','Wordmarks, symbols, distorted type, and visual fragments.'],
-    ['World Notes Zine','Publication','Printed zine of visuals, notes, and artist-world pieces.'],
-    ['Darkroom Long Sleeve','Apparel','Narrow arm type with a back-image treatment.'],
-    ['Audio Relic Keychain','Accessory','Matte metal signal, cassette, or X-shaped charm.'],
-    ['Midnight Screenprint','Limited art print','Deep-black screenprint with muted chrome ink.']
-  ].map(([name,type,direction]) => ({brand:'Xcalitoy',name,type,direction})),
-  ...[
-    ['Late Hours Tee','Apparel','Washed black tee with a night-road California graphic.'],
-    ['California After Dark Hoodie','Apparel','Soft charcoal hoodie with moody California visual cues.'],
-    ['Dark Melodic Pulse Poster','Art print','Cinematic artist print with restrained lyric-adjacent text.'],
-    ['JC Monogram Cap','Headwear','Minimal black cap with a stitched JC monogram.'],
-    ['Studio Notes Journal','Stationery','Matte-black book for lyric drafts, tracklists, and sessions.'],
-    ['Passenger Seat Tote','Accessory','Canvas tote with a California-night image treatment.'],
-    ['Soundcheck Long Sleeve','Apparel','Song-title-style typography running down the sleeves.'],
-    ['Midnight CD Case Tee','Apparel','Graphic inspired by independent physical-release textures.'],
-    ['California Signal Sticker Pack','Sticker pack','Palms, studio symbols, handwriting, and artist marks.'],
-    ['Night Shift Beanie','Headwear','Black ribbed beanie with a small woven JC label.']
-  ].map(([name,type,direction]) => ({brand:'Joseph Calitoy',name,type,direction})),
-  ...[
-    ['Kurced Neon Logo Tee','Apparel','Black tee built around the supplied neon Kurced mark.'],
-    ['Afterglow Mesh Top','Apparel','Layering piece with sharp gothic type and neon accents.'],
-    ['Cursed Heart Hoodie','Apparel','Oversized hoodie with a cracked-heart emblem in hot pink.'],
-    ['Nightclub Ruin Poster','Art print','Neon-goth club-light print with cathedral silhouettes.'],
-    ['Chrome Thorn Choker','Accessory','Dark-metal choker with a minimal thorn charm.'],
-    ['Blacklight Sticker Pack','Sticker pack','Broken halos, thorns, symbols, and warped lettering.'],
-    ['Neon Tears Phone Case','Accessory','Dark phone case with glossy neon-drip art.'],
-    ['Dead Signal Tote','Accessory','Black canvas tote with luminous glitch graphics.'],
-    ['Goth Pop Nail Decals','Beauty accessory','Stars, thorns, hearts, and sharp Kurced type.'],
-    ['Midnight Veil Beanie','Headwear','Black beanie with a small embroidered neon icon.']
-  ].map(([name,type,direction]) => ({brand:'Kurced',name,type,direction})),
-  ...[
-    ['C7 Cue Sleeve','Cue accessory','Protective black sleeve with clean C7 geometry.'],
-    ['C7 Chalk Holder','Cue accessory','Compact magnetic holder in matte black with etched logo.'],
-    ['Break Room Tee','Apparel','Graphic tee with an eight ball and C7 cue linework.'],
-    ['Precision Shot Hoodie','Apparel','Minimal table-diagram graphic with understated C7 mark.'],
-    ['C7 Microfiber Towel','Game accessory','Cue-cleaning towel with tonal dark graphics.'],
-    ['Rack ’Em Cap','Headwear','Structured black cap with embroidered C7 logo.'],
-    ['Pool Hall Patch Set','Patch set','Balls, cue tips, score marks, and C7 iconography.'],
-    ['C7 Scorebook','Stationery','Pocket book for matches, practice goals, and table notes.'],
-    ['Cue Case Tag','Travel accessory','Durable identification tag with C7 graphic branding.'],
-    ['Corner Pocket Print','Art print','Minimal billiards geometry in black, white, and green.']
-  ].map(([name,type,direction]) => ({brand:'Calitoy Cues',name,type,direction})),
-  ...[
-    ['Custom Deck Art Tee','Apparel','Collage of deck silhouettes and workshop branding.'],
-    ['Deck Wall Hanger','Home accessory','Minimal display hardware with branded instructions.'],
-    ['Grip Tape Graphic Sheet','Skate accessory','High-contrast printed grip-tape design direction.'],
-    ['Skate Shop Hoodie','Apparel','Heavy hoodie with workshop-stamp back graphics.'],
-    ['Deck Builder Sketchbook','Stationery','Blank book for board graphics and color studies.'],
-    ['Customs Logo Beanie','Headwear','Workwear black beanie with a woven patch.'],
-    ['Wheel Mark Sticker Pack','Sticker pack','Board shapes, hardware icons, scribbles, and labels.'],
-    ['Skate Tool Pouch','Utility accessory','Compact pouch for hardware and small essentials.'],
-    ['Rough Cut Art Print','Art print','Screenprint-style deck graphic with imperfect edges.'],
-    ['Workshop Tote','Accessory','Durable canvas marked with a workshop stamp graphic.']
-  ].map(([name,type,direction]) => ({brand:'Calitoy Customs',name,type,direction})),
-  ...[
-    ['Wicked Youth Vanity Tee','Apparel','Clean black tee with glossy beauty-inspired graphics.'],
-    ['Glow With Teeth Cosmetic Bag','Beauty accessory','Black zipper pouch with bright flare graphics.'],
-    ['Youthful Chaos Mirror','Beauty accessory','Compact mirror with a glossy neon Wicked Youth mark.'],
-    ['Flare Face Towel Set','Beauty accessory','Soft towels with high-contrast tabs and graphic trim.'],
-    ['Aftercare Hoodie','Apparel','Oversized black hoodie with beauty-lab back graphics.'],
-    ['Wicked Youth Headband','Beauty accessory','Stretch headband with a discreet woven mark.'],
-    ['Product Ritual Pouch','Beauty accessory','Reusable travel organizer for future skin-product routines.'],
-    ['Flare Sticker Sheet','Sticker pack','Glossy lips, stars, flames, and beauty-lab type.'],
-    ['Glow Club Keychain','Accessory','Acrylic charm with a bright translucent flare motif.'],
-    ['Youth Goods Tote','Accessory','Natural canvas tote with an oversized Wicked Youth wordmark.']
-  ].map(([name,type,direction]) => ({brand:'Wicked Youth Goods',name,type,direction})),
-  ...[
-    ['Camp Crew Tee','Apparel','A field-day tee for builders, mentors, and mentees.'],
-    ['Field Notes Workbook','Education tool','Structured workbook for goals, projects, and reflection.'],
-    ['Mentor Session Cards','Learning tool','Prompt deck for one-on-one conversations and progress.'],
-    ['Ideas Need Reps Hoodie','Apparel','Heavy hoodie with a simple practice-over-perfection message.'],
-    ['Roadmap Wall Print','Education tool','Editable-looking visual map for turning an idea into action.'],
-    ['Camp Canvas Tote','Accessory','Durable tote for notes, laptops, and workshop materials.'],
-    ['Progress Pin Set','Pin set','Small markers for milestones, feedback, and finished work.'],
-    ['Future Builder Cap','Headwear','Classic cap with understated CalitoyCamp embroidery.'],
-    ['Workshop Sticker Pack','Sticker pack','Prompts, arrows, notes, and positive pressure.'],
-    ['The Long Game Journal','Stationery','Guided notebook for mentoring plans and personal progress.']
-  ].map(([name,type,direction]) => ({brand:'CalitoyCamp',name,type,direction}))
+const brandConfig = {
+  'Kurced': {
+    name: 'Kurced',
+    tagline: 'Neon Goth. Cursed Hearts.',
+    colors: { primary: '#FF00AA', secondary: '#1A1A2E', accent: '#00FF88' },
+    fonts: { display: 'Orbitron', body: 'Inter' },
+    logo: 'assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Primary_Crest.svg',
+    wordmark: 'assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Wordmark.svg',
+    style: 'neon-goth'
+  },
+  'Tarosyn': {
+    name: 'Tarosyn',
+    tagline: 'Mystical. Celestial. Aligned.',
+    colors: { primary: '#6B4EE6', secondary: '#1A1A2E', accent: '#FFD700' },
+    fonts: { display: 'Cinzel', body: 'Inter' },
+    logo: 'assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Primary_Crest.svg',
+    wordmark: 'assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Wordmark.svg',
+    style: 'mystical'
+  },
+  'LoveLouder': {
+    name: 'Love Louder',
+    tagline: 'Luxury. Gold. Love.',
+    colors: { primary: '#D4AF37', secondary: '#0A0A0A', accent: '#FFFFFF' },
+    fonts: { display: 'Playfair Display', body: 'Inter' },
+    logo: 'assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Primary_Crest.svg',
+    wordmark: 'assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Love_Louder_Wordmark.svg',
+    style: 'luxury'
+  },
+  'Endof8': {
+    name: 'Endof8',
+    tagline: 'Surf. Punk. California.',
+    colors: { primary: '#FF6B35', secondary: '#1A1A2E', accent: '#00CED1' },
+    fonts: { display: 'Bebas Neue', body: 'Inter' },
+    logo: 'assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Primary_Badge.svg',
+    wordmark: 'assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Wordmark.svg',
+    style: 'surf-punk'
+  },
+  'WickedYouth': {
+    name: 'Wicked Youth',
+    tagline: 'Beauty. Streetwear. Chaos.',
+    colors: { primary: '#FF3366', secondary: '#0A0A0A', accent: '#00FFFF' },
+    fonts: { display: 'Montserrat', body: 'Inter' },
+    logo: 'assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/WY_Circle.svg',
+    wordmark: 'assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/Primary_Wordmark.svg',
+    style: 'beauty-street'
+  }
+};
+
+const merchCatalog = [
+  // Kurced - Neon Goth
+  { brand: 'Kurced', name: 'Neon Logo Tee', type: 'apparel', price: 45, image: 'assets/mockups/kurced/tee-black.jpg', description: 'Black tee with neon Kurced mark' },
+  { brand: 'Kurced', name: 'Cursed Heart Hoodie', type: 'apparel', price: 85, image: 'assets/mockups/kurced/hoodie-black.jpg', description: 'Oversized hoodie with cracked-heart emblem' },
+  { brand: 'Kurced', name: 'Afterglow Mesh Top', type: 'apparel', price: 55, image: 'assets/mockups/kurced/mesh-top.jpg', description: 'Layering piece with gothic type' },
+  { brand: 'Kurced', name: 'Chrome Thorn Choker', type: 'accessory', price: 35, image: 'assets/mockups/kurced/choker.jpg', description: 'Dark-metal choker with thorn charm' },
+  { brand: 'Kurced', name: 'Blacklight Sticker Pack', type: 'accessory', price: 12, image: 'assets/mockups/kurced/stickers.jpg', description: 'Broken halos, thorns, warped lettering' },
+  { brand: 'Kurced', name: 'Nightclub Ruin Poster', type: 'art', price: 30, image: 'assets/mockups/kurced/poster.jpg', description: 'Neon-goth club-light print' },
+  { brand: 'Kurced', name: 'Neon Tears Phone Case', type: 'accessory', price: 25, image: 'assets/mockups/kurced/phone-case.jpg', description: 'Dark case with neon-drip art' },
+  { brand: 'Kurced', name: 'Dead Signal Tote', type: 'accessory', price: 38, image: 'assets/mockups/kurced/tote.jpg', description: 'Black canvas with glitch graphics' },
+
+  // Tarosyn - Mystical
+  { brand: 'Tarosyn', name: 'Major Arcana Candle Set', type: 'home', price: 68, image: 'assets/mockups/tarosyn/candles.jpg', description: 'Twelve dark-glass archetype candles' },
+  { brand: 'Tarosyn', name: 'Birth Chart Journal', type: 'stationery', price: 32, image: 'assets/mockups/tarosyn/journal.jpg', description: 'Midnight linen with constellation mapping' },
+  { brand: 'Tarosyn', name: 'Moon Phase Silk Scarf', type: 'accessory', price: 55, image: 'assets/mockups/tarosyn/scarf.jpg', description: 'Tonal lunar-cycle square' },
+  { brand: 'Tarosyn', name: 'Seeker Tarot Cloth', type: 'home', price: 42, image: 'assets/mockups/tarosyn/tarot-cloth.jpg', description: 'Velvet reading cloth with embroidered edge' },
+  { brand: 'Tarosyn', name: 'Celestial Transit Tee', type: 'apparel', price: 40, image: 'assets/mockups/tarosyn/tee.jpg', description: 'Washed black with transit diagram' },
+  { brand: 'Tarosyn', name: 'Tarot Symbol Pin Set', type: 'accessory', price: 28, image: 'assets/mockups/tarosyn/pins.jpg', description: 'Moon, tower, sun, star icons' },
+  { brand: 'Tarosyn', name: 'Zodiac Art Print Set', type: 'art', price: 45, image: 'assets/mockups/tarosyn/prints.jpg', description: 'Twelve moody zodiac illustrations' },
+  { brand: 'Tarosyn', name: 'Night Sky Hoodie', type: 'apparel', price: 78, image: 'assets/mockups/tarosyn/hoodie.jpg', description: 'Charcoal with constellation work' },
+
+  // Love Louder - Luxury
+  { brand: 'LoveLouder', name: 'Gold Crest Tee', type: 'apparel', price: 65, image: 'assets/mockups/lovelouder/tee-gold.jpg', description: 'Premium black tee with gold crest' },
+  { brand: 'LoveLouder', name: 'Love Signature Hoodie', type: 'apparel', price: 95, image: 'assets/mockups/lovelouder/hoodie.jpg', description: 'Luxury fleece with rose signature' },
+  { brand: 'LoveLouder', name: 'Gold Foil Journal', type: 'stationery', price: 48, image: 'assets/mockups/lovelouder/journal.jpg', description: 'Embossed leather with gold accents' },
+  { brand: 'LoveLouder', name: 'Rose Icon Tote', type: 'accessory', price: 58, image: 'assets/mockups/lovelouder/tote.jpg', description: 'Canvas with embroidered rose' },
+  { brand: 'LoveLouder', name: 'Love Letter Print', type: 'art', price: 55, image: 'assets/mockups/lovelouder/print.jpg', description: 'Gold foil typography art' },
+  { brand: 'LoveLouder', name: 'Embroidered Cap', type: 'accessory', price: 42, image: 'assets/mockups/lovelouder/cap.jpg', description: 'Black wool with gold embroidery' },
+  { brand: 'LoveLouder', name: 'Luxury Sticker Set', type: 'accessory', price: 18, image: 'assets/mockups/lovelouder/stickers.jpg', description: 'Gold foil brand marks' },
+  { brand: 'LoveLouder', name: 'Crest Pin', type: 'accessory', price: 22, image: 'assets/mockups/lovelouder/pin.jpg', description: 'Enamel pin with gold plating' },
+
+  // Endof8 - Surf/Punk
+  { brand: 'Endof8', name: 'Pier Logo Tee', type: 'apparel', price: 38, image: 'assets/mockups/endof8/tee.jpg', description: 'Washed tee with pier badge' },
+  { brand: 'Endof8', name: 'Seagull Hoodie', type: 'apparel', price: 72, image: 'assets/mockups/endof8/hoodie.jpg', description: 'Pullover with seagull icon back' },
+  { brand: 'Endof8', name: 'Eight Icon Long Sleeve', type: 'apparel', price: 48, image: 'assets/mockups/endof8/long-sleeve.jpg', description: 'Graphic with eight ball detail' },
+  { brand: 'Endof8', name: 'Beach Tote', type: 'accessory', price: 35, image: 'assets/mockups/endof8/tote.jpg', description: 'Canvas with wave graphics' },
+  { brand: 'Endof8', name: 'Surf Sticker Pack', type: 'accessory', price: 15, image: 'assets/mockups/endof8/stickers.jpg', description: 'Seagulls, waves, punk type' },
+  { brand: 'Endof8', name: 'Pier Sunset Poster', type: 'art', price: 28, image: 'assets/mockups/endof8/poster.jpg', description: 'California pier photography' },
+  { brand: 'Endof8', name: 'Trucker Cap', type: 'accessory', price: 32, image: 'assets/mockups/endof8/cap.jpg', description: 'Mesh back with embroidered badge' },
+  { brand: 'Endof8', name: 'Keychain Set', type: 'accessory', price: 20, image: 'assets/mockups/endof8/keychain.jpg', description: 'Metal seagull and eight icons' },
+
+  // Wicked Youth - Beauty/Street
+  { brand: 'WickedYouth', name: 'WY Circle Tee', type: 'apparel', price: 42, image: 'assets/mockups/wickedyouth/tee.jpg', description: 'Black tee with circle logo' },
+  { brand: 'WickedYouth', name: 'Crown Hoodie', type: 'apparel', price: 75, image: 'assets/mockups/wickedyouth/hoodie.jpg', description: 'Oversized with crown icon' },
+  { brand: 'WickedYouth', name: 'WY Monogram Cap', type: 'accessory', price: 38, image: 'assets/mockups/wickedyouth/cap.jpg', description: 'Structured with monogram' },
+  { brand: 'WickedYouth', name: 'Beauty Pouch', type: 'accessory', price: 28, image: 'assets/mockups/wickedyouth/pouch.jpg', description: 'Zipper pouch with neon trim' },
+  { brand: 'WickedYouth', name: 'Crown Pin', type: 'accessory', price: 16, image: 'assets/mockups/wickedyouth/pin.jpg', description: 'Gold crown enamel pin' },
+  { brand: 'WickedYouth', name: 'Street Sticker Pack', type: 'accessory', price: 14, image: 'assets/mockups/wickedyouth/stickers.jpg', description: 'Crown, WY marks, neon accents' },
+  { brand: 'WickedYouth', name: 'Mirror Compact', type: 'accessory', price: 24, image: 'assets/mockups/wickedyouth/mirror.jpg', description: 'Pocket mirror with logo' },
+  { brand: 'WickedYouth', name: 'Canvas Tote', type: 'accessory', price: 36, image: 'assets/mockups/wickedyouth/tote.jpg', description: 'Natural canvas with wordmark' }
 ];
 
-const conceptCatalog = document.getElementById('concept-catalog');
-const filterButtons = document.querySelectorAll('[data-filter]');
+// Cart functionality
+let cart = [];
 
-function renderConcepts(filter = 'all') {
-  const concepts = filter === 'all' ? merchConcepts : merchConcepts.filter((concept) => concept.brand === filter);
-  conceptCatalog.innerHTML = concepts.map((concept, index) => `<article class="concept-card" data-brand="${concept.brand}"><span>${concept.brand.toUpperCase()} / ${String(index + 1).padStart(2, '0')}</span><h3>${concept.name}</h3><p>${concept.direction}</p><small>${concept.type.toUpperCase()} / PROPOSED DROP</small></article>`).join('');
+function addToCart(item) {
+  cart.push(item);
+  updateCartUI();
 }
 
-filterButtons.forEach((button) => button.addEventListener('click', () => {
-  filterButtons.forEach((item) => item.classList.remove('is-active'));
-  button.classList.add('is-active');
-  renderConcepts(button.dataset.filter);
-}));
+function updateCartUI() {
+  const cartCount = document.getElementById('cart-count');
+  if (cartCount) cartCount.textContent = cart.length;
+}
 
-renderConcepts();
+function renderCatalog(filter = 'all') {
+  const catalog = document.getElementById('catalog');
+  if (!catalog) return;
+  
+  const items = filter === 'all' 
+    ? merchCatalog 
+    : merchCatalog.filter(item => item.brand === filter);
+  
+  catalog.innerHTML = items.map(item => {
+    const config = brandConfig[item.brand];
+    return `
+      <article class="product-card" data-brand="${item.brand}">
+        <div class="product-image" style="background: ${config.colors.secondary}">
+          <img src="${item.image}" alt="${item.name}" loading="lazy">
+          <div class="brand-badge" style="background: ${config.colors.primary}">${config.name}</div>
+        </div>
+        <div class="product-info">
+          <h3>${item.name}</h3>
+          <p class="product-desc">${item.description}</p>
+          <div class="product-meta">
+            <span class="price">$${item.price}</span>
+            <span class="type">${item.type}</span>
+          </div>
+          <button onclick="addToCart(${JSON.stringify(item).replace(/"/g, '&quot;')})" 
+                  class="add-to-cart" 
+                  style="background: ${config.colors.primary}; color: ${config.colors.secondary}">
+            Add to Cart
+          </button>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function renderBrandShowcase() {
+  const showcase = document.getElementById('brand-showcase');
+  if (!showcase) return;
+  
+  showcase.innerHTML = Object.values(brandConfig).map(brand => `
+    <div class="brand-card" data-brand="${brand.name}" style="--brand-primary: ${brand.colors.primary}; --brand-secondary: ${brand.colors.secondary}">
+      <div class="brand-logo">
+        <img src="${brand.logo}" alt="${brand.name} logo">
+      </div>
+      <div class="brand-info">
+        <h2>${brand.name}</h2>
+        <p class="tagline">${brand.tagline}</p>
+        <div class="color-palette">
+          <span style="background: ${brand.colors.primary}"></span>
+          <span style="background: ${brand.colors.secondary}"></span>
+          <span style="background: ${brand.colors.accent}"></span>
+        </div>
+      </div>
+      <a href="#catalog" onclick="filterBrand('${brand.name}')" class="shop-brand">Shop ${brand.name}</a>
+    </div>
+  `).join('');
+}
+
+function filterBrand(brandName) {
+  renderCatalog(brandName);
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === brandName);
+  });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  renderBrandShowcase();
+  renderCatalog();
+  
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCatalog(btn.dataset.filter);
+    });
+  });
+});
+
+// Expose functions globally
+window.addToCart = addToCart;
+window.filterBrand = filterBrand;
+window.renderCatalog = renderCatalog;

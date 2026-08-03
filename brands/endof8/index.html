@@ -1,348 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Endof8 | Official Store</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --orange: #D2691E;
-      --orange-light: #E8833A;
-      --sand: #C2B280;
-      --black: #0A0A0A;
-      --white: #FFFFFF;
-      --navy: #1A1A3E;
-    }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--black);
-      color: var(--white);
-      line-height: 1.6;
-    }
-    
-    .header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(10,10,10,0.98);
-      backdrop-filter: blur(20px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(210,105,30,0.2);
-    }
-    
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .logo-circle {
-      width: 50px;
-      height: 50px;
-      border: 2px dashed var(--orange);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .logo-text {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 1px;
-    }
-    
-    .nav {
-      display: flex;
-      gap: 2.5rem;
-    }
-    
-    .nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 400;
-      letter-spacing: 2px;
-      transition: color 0.3s;
-    }
-    
-    .nav a:hover { color: var(--orange); }
-    
-    .cart-btn {
-      background: var(--orange);
-      border: none;
-      color: var(--white);
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 2px;
-      transition: all 0.3s;
-    }
-    
-    .cart-btn:hover {
-      background: var(--orange-light);
-    }
-    
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      background: linear-gradient(180deg, var(--black) 0%, #0a0a1a 50%, var(--black) 100%);
-      position: relative;
-    }
-    
-    .hero-logo {
-      width: 280px;
-      height: 280px;
-      margin-bottom: 2rem;
-    }
-    
-    .hero h1 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-      color: var(--white);
-    }
-    
-    .hero h1 span {
-      color: var(--orange);
-    }
-    
-    .hero-tagline {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 3rem;
-      max-width: 500px;
-      letter-spacing: 1px;
-    }
-    
-    .pillars {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-bottom: 4rem;
-    }
-    
-    .pillar {
-      text-align: center;
-      padding: 1rem;
-    }
-    
-    .pillar-text {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 3px;
-      color: var(--orange);
-      font-weight: 500;
-    }
-    
-    .cta-btn {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      padding: 1.25rem 3rem;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.3s;
-      font-family: 'Oswald', sans-serif;
-    }
-    
-    .cta-btn:hover {
-      background: var(--orange-light);
-    }
-    
-    .products {
-      padding: 6rem 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    
-    .section-header h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 3rem;
-      color: var(--orange);
-      margin-bottom: 1rem;
-      letter-spacing: 3px;
-    }
-    
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2.5rem;
-    }
-    
-    .product-card {
-      background: #0f0f1a;
-      border: 1px solid rgba(210,105,30,0.2);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.3s;
-    }
-    
-    .product-card:hover {
-      border-color: var(--orange);
-    }
-    
-    .product-image {
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .product-price {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--orange);
-      margin-bottom: 1rem;
-    }
-    
-    .add-to-cart {
-      width: 100%;
-      background: var(--orange);
-      color: var(--white);
-      border: none;
-      padding: 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.3s;
-      font-family: 'Oswald', sans-serif;
-    }
-    
-    .add-to-cart:hover {
-      background: var(--orange-light);
-    }
-    
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 3rem; }
-      .hero-logo { width: 220px; height: 220px; }
-      .pillars { flex-direction: column; gap: 1rem; }
-      .nav { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endof8 — Official Merch</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #060504;
+    --orange: #ea580c;
+    --sand: #d4a574;
+    --ocean: #0369a1;
+    --white: #f5f0e8;
+    --card-bg: #0f0b08;
+    --border: #2a1a0a;
+  }
+  body { background: var(--bg); color: var(--white); font-family: 'Arial', sans-serif; min-height: 100vh; }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2rem; background: #000;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo img { height: 44px; }
+  .nav-logo span { font-size: 1.4rem; font-weight: 900; color: var(--orange); letter-spacing: 0.05em; text-transform: uppercase; }
+  .cart-btn {
+    background: var(--orange); color: #fff; border: none;
+    padding: 0.5rem 1.2rem; border-radius: 6px; cursor: pointer;
+    font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;
+  }
+  .cart-btn span { background: var(--sand); color: #000; border-radius: 50%; width: 20px; height: 20px;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+
+  .hero {
+    text-align: center; padding: 4rem 2rem 3rem;
+    background: linear-gradient(180deg, #1a0a02 0%, var(--bg) 70%);
+    border-bottom: 2px solid var(--orange);
+  }
+  .hero-logo { max-width: 200px; margin: 0 auto 1.5rem; display: block; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--orange); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 900; }
+  .hero p { color: var(--sand); margin-top: 0.75rem; font-size: 1.05rem; }
+  .wave { font-size: 1.6rem; margin-bottom: 0.75rem; }
+
+  .section-title { text-align: center; padding: 2rem 1rem 1rem; font-size: 1rem; color: var(--sand); text-transform: uppercase; letter-spacing: 0.2em; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem; padding: 1rem 2rem 3rem; max-width: 1300px; margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--orange); }
+  .card-img {
+    background: linear-gradient(135deg, #1a0d04 0%, #0a0804 100%);
+    padding: 2rem; display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+  }
+  .card-img img { max-width: 130px; max-height: 130px; object-fit: contain; }
+  .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
+  .card-name { font-size: 1rem; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.04em; }
+  .card-price { font-size: 1.3rem; color: var(--orange); font-weight: 700; }
+  .size-select {
+    background: #1a0d04; border: 1px solid var(--border); color: var(--white);
+    padding: 0.4rem 0.6rem; border-radius: 6px; width: 100%; font-size: 0.9rem; cursor: pointer;
+  }
+  .add-btn {
+    margin-top: auto; background: var(--orange); color: #fff;
+    border: none; padding: 0.7rem; border-radius: 8px; cursor: pointer;
+    font-size: 0.95rem; font-weight: 700; transition: background 0.2s;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .add-btn:hover { background: #c2410c; }
+
+  .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; }
+  .cart-overlay.open { display: block; }
+  .cart-drawer {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 360px; max-width: 95vw;
+    background: #0f0b08; border-left: 1px solid var(--border);
+    z-index: 300; display: flex; flex-direction: column; transform: translateX(100%);
+    transition: transform 0.3s;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .cart-header h2 { color: var(--orange); font-size: 1.2rem; }
+  .close-cart { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+  .cart-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .cart-item-name { color: var(--white); }
+  .cart-item-price { color: var(--orange); }
+  .cart-empty { color: #6b4a30; text-align: center; margin-top: 2rem; }
+  .cart-footer { padding: 1.2rem 1.5rem; border-top: 1px solid var(--border); }
+  .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; }
+  .cart-total span:last-child { color: var(--orange); font-weight: 700; }
+  .checkout-btn {
+    width: 100%; background: var(--orange); color: #fff; border: none;
+    padding: 0.9rem; border-radius: 8px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  footer {
+    text-align: center; padding: 2.5rem 1rem;
+    border-top: 2px solid var(--orange); background: #000;
+    color: var(--sand);
+  }
+  footer a { color: var(--orange); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .grid { padding: 1rem; gap: 1rem; }
+    .hero { padding: 2.5rem 1rem 2rem; }
+  }
+</style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <div class="logo-circle">
-          <svg viewBox="0 0 100 100" width="40" height="40">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#D2691E" stroke-width="2" stroke-dasharray="10,5"/>
-            <text x="50" y="40" text-anchor="middle" fill="#D2691E" font-size="20" font-family="Oswald" font-weight="bold">End</text>
-            <text x="50" y="65" text-anchor="middle" fill="#D2691E" font-size="28" font-family="Oswald" font-weight="bold">of</text>
-            <text x="50" y="85" text-anchor="middle" fill="#D2691E" font-size="28" font-family="Oswald" font-weight="bold">8</text>
-          </svg>
-        </div>
-        <div class="logo-text">ENDOF8</div>
-      </div>
-      <nav class="nav">
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
-        <a href="#pillars">Pillars</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a href="#cart" class="cart-btn">CART (0)</a>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-logo">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="90" fill="none" stroke="#D2691E" stroke-width="3" stroke-dasharray="15,8"/>
-        <text x="100" y="60" text-anchor="middle" fill="#FFFFFF" font-size="24" font-family="Oswald" font-weight="500">End of</text>
-        <text x="100" y="115" text-anchor="middle" fill="#D2691E" font-size="72" font-family="Oswald" font-weight="700">8</text>
-        <text x="100" y="155" text-anchor="middle" fill="#C2B280" font-size="12" font-family="Inter" letter-spacing="3">OCEAN BEACH, CA</text>
-        <path d="M160 70 Q170 65 175 70 Q180 75 170 80" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
-      </svg>
-    </div>
-    <h1>ENDOF<span>8</span></h1>
-    <p class="hero-tagline">Live Free. Ride Hard. Ocean Beach forever.</p>
-    
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar-text">LIVE FREE</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-text">RIDE HARD</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-text">END OF 8</div>
-      </div>
-    </div>
-    
-    <a href="#shop" class="cta-btn">REP THE COAST</a>
-  </section>
+<nav>
+  <a class="nav-logo" href="../../index.html">
+    <img src="../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Wordmark.png" alt="Endof8">
+  </a>
+  <button class="cart-btn" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
+</nav>
 
-  <section class="products" id="shop">
-    <div class="section-header">
-      <h2>THE COLLECTION</h2>
-      <p>Coastal streetwear for Ocean Beach locals.</p>
-    </div>
-    
-    <div class="product-grid" id="productGrid"></div>
-  </section>
+<section class="hero">
+  <img class="hero-logo" src="../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Primary_Badge.png" alt="Endof8 Badge">
+  <div class="wave">🌊 🐦 🌊</div>
+  <h1>Endof8</h1>
+  <p>OB pier culture — coastal grunge, surf punk, San Diego forever</p>
+</section>
 
-  <script src="../../admin/data/merch-database-v2.js"></script>
-  <script src="../../admin/data/expanded-products.js"></script>
-  <script>
-    const products = EXPANDED_PRODUCTS['endof8'] || BRAND_PRODUCT_LINES['endof8'];
-    const grid = document.getElementById('productGrid');
-    
-    grid.innerHTML = products.slice(0, 6).map(product => `
-      <div class="product-card">
-        <div class="product-image">
-          <svg viewBox="0 0 200 200" style="max-width: 80%; max-height: 80%;">
-            <circle cx="100" cy="100" r="85" fill="none" stroke="#D2691E" stroke-width="2" stroke-dasharray="12,6"/>
-            <text x="100" y="70" text-anchor="middle" fill="#FFFFFF" font-size="18" font-family="Oswald">End of</text>
-            <text x="100" y="115" text-anchor="middle" fill="#D2691E" font-size="50" font-family="Oswald" font-weight="bold">8</text>
-          </svg>
-        </div>
-        <div class="product-info" style="padding: 1.5rem;">
-          <h3 style="font-family: Oswald, sans-serif; font-size: 1.3rem; margin-bottom: 0.5rem;">${product.name}</h3>
-          <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem;">${product.design}</p>
-          <div class="product-price">$${product.price.toFixed(2)}</div>
-          <button class="add-to-cart" onclick="addToCart('${product.id}')">ADD TO CART</button>
-        </div>
+<p class="section-title">— Official Merch Collection —</p>
+
+<div class="grid" id="product-grid"></div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p class="cart-empty">Your cart is empty</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+<footer>
+  <p><strong style="color:#ea580c">Endof8</strong> — End of the pier, end of the 8, start of everything</p>
+  <p style="margin-top:0.5rem;font-size:0.85rem;">Part of <a href="../hub/index.html">CalitoyCorp</a> · <a href="../hub/index.html">All Brands</a></p>
+</footer>
+
+<script>
+const products = [
+  { name: "Primary Badge Tee", price: 38, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Primary_Badge.png" },
+  { name: "Pier Badge Hoodie", price: 72, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Pier_Badge.png" },
+  { name: "Eight Seagull Tee", price: 36, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Eight_Seagull.png" },
+  { name: "Wordmark Crewneck", price: 62, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Wordmark.png" },
+  { name: "Pier Badge Hat", price: 30, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Pier_Badge.png" },
+  { name: "OB Sticker Pack", price: 12, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Primary_Badge.png" },
+  { name: "Seagull Long Sleeve", price: 52, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Eight_Seagull.png" },
+  { name: "Endof8 Beanie", price: 26, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Wordmark.png" },
+  { name: "Pier Tote", price: 24, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Pier_Badge.png" },
+  { name: "Badge Hoodie", price: 74, img: "../../assets/branding/png/All_Brand_Logos_PNG/Endof8/Brand_Color/Primary_Badge.png" },
+];
+
+const sizes = ["S","M","L","XL","XXL"];
+let cart = [];
+
+function renderGrid() {
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = products.map((p, i) => `
+    <div class="card">
+      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-price">$${p.price}</div>
+        <select class="size-select" id="size-${i}">
+          ${sizes.map(s => `<option>${s}</option>`).join("")}
+        </select>
+        <button class="add-btn" onclick="addToCart(${i})">Add to Cart</button>
       </div>
-    `).join('');
-    
-    function addToCart(productId) {
-      alert(`Added ${productId} to cart!`);
-    }
-  </script>
+    </div>
+  `).join("");
+}
+
+function addToCart(i) {
+  const size = document.getElementById(`size-${i}`).value;
+  const p = products[i];
+  cart.push({ name: p.name, size, price: p.price });
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").textContent = cart.length;
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  document.getElementById("cart-total").textContent = "$" + total;
+  const el = document.getElementById("cart-items");
+  if (!cart.length) { el.innerHTML = '<p class="cart-empty">Your cart is empty</p>'; return; }
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <span class="cart-item-name">${item.name} (${item.size})</span>
+      <span class="cart-item-price">$${item.price}</span>
+    </div>
+  `).join("");
+}
+
+function openCart() { document.getElementById("cart-drawer").classList.add("open"); document.getElementById("cart-overlay").classList.add("open"); }
+function closeCart() { document.getElementById("cart-drawer").classList.remove("open"); document.getElementById("cart-overlay").classList.remove("open"); }
+
+renderGrid();
+</script>
 </body>
 </html>
