@@ -507,6 +507,67 @@
 
   <div class="divider"></div>
 
+  <!-- LOCKED OUT SINGLE -->
+  <section id="locked-out" style="padding:80px 20px; text-align:center; background: radial-gradient(ellipse at center, rgba(139,47,201,0.15) 0%, transparent 70%);">
+    <p style="font-family:'UnifrakturMaguntia',serif; color:var(--magenta); font-size:0.85rem; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:12px;">New Single</p>
+    <h2 style="font-family:'UnifrakturMaguntia',serif; font-size:clamp(2.5rem,8vw,5rem); color:var(--white); text-shadow:0 0 40px rgba(192,38,211,0.8); margin-bottom:40px;">Locked Out</h2>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:40px; max-width:600px; margin:0 auto;">
+
+      <!-- Cover Art -->
+      <div style="position:relative; width:min(340px,90vw);">
+        <img src="../../assets/branding/locked-out-cover.jpg" alt="Locked Out - Kurced"
+          style="width:100%; border-radius:8px; box-shadow:0 0 60px rgba(192,38,211,0.5), 0 0 120px rgba(139,47,201,0.3);">
+        <div style="position:absolute; top:12px; right:12px; background:rgba(0,0,0,0.7); border:1px solid var(--border); border-radius:4px; padding:4px 8px; font-size:0.65rem; letter-spacing:0.1em; color:var(--grey);">PARENTAL ADVISORY</div>
+      </div>
+
+      <!-- Custom Audio Player -->
+      <div id="player" style="width:100%; background:#110012; border:1px solid var(--border-bright); border-radius:12px; padding:24px; box-shadow:0 0 30px rgba(139,47,201,0.2);">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+          <img src="../../assets/branding/locked-out-cover.jpg" alt="" style="width:52px; height:52px; border-radius:6px; object-fit:cover;">
+          <div style="text-align:left;">
+            <div style="font-weight:600; color:var(--white); font-size:1rem;">Locked Out</div>
+            <div style="color:var(--magenta); font-size:0.8rem; letter-spacing:0.15em;">KURCED</div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div id="progress-track" style="width:100%; height:4px; background:rgba(139,47,201,0.2); border-radius:2px; cursor:pointer; margin-bottom:12px; position:relative;">
+          <div id="progress-fill" style="height:100%; width:0%; background:linear-gradient(90deg,var(--purple),var(--magenta)); border-radius:2px; transition:width 0.1s linear;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--grey); margin-bottom:16px;">
+          <span id="time-current">0:00</span>
+          <span id="time-total">--:--</span>
+        </div>
+
+        <!-- Controls -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:24px;">
+          <button id="prev-btn" onclick="seekBack()" style="background:none; border:none; color:var(--grey); cursor:pointer; font-size:1.2rem;">⏮</button>
+          <button id="play-btn" onclick="togglePlay()"
+            style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,var(--purple),var(--magenta)); border:none; color:#fff; font-size:1.4rem; cursor:pointer; box-shadow:0 0 20px rgba(192,38,211,0.5); display:flex; align-items:center; justify-content:center;">▶</button>
+          <button id="next-btn" onclick="seekForward()" style="background:none; border:none; color:var(--grey); cursor:pointer; font-size:1.2rem;">⏭</button>
+          <button onclick="toggleMute()" id="mute-btn" style="background:none; border:none; color:var(--grey); cursor:pointer; font-size:1rem; margin-left:8px;">🔊</button>
+        </div>
+        <audio id="kurced-audio" preload="metadata"></audio>
+      </div>
+
+      <!-- Coming Soon -->
+      <div>
+        <p style="font-size:0.75rem; letter-spacing:0.3em; color:var(--grey); text-transform:uppercase; margin-bottom:16px;">Coming Soon Everywhere</p>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 Spotify</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 Apple Music</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 SoundCloud</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 YouTube Music</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 Tidal</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- FOOTER -->
   <footer>
     <img
@@ -531,6 +592,43 @@
   </footer>
 
   <script>
+    // Audio Player
+    const audio = document.getElementById('kurced-audio');
+    const playBtn = document.getElementById('play-btn');
+    const progressFill = document.getElementById('progress-fill');
+    const progressTrack = document.getElementById('progress-track');
+    const timeCurrent = document.getElementById('time-current');
+    const timeTotal = document.getElementById('time-total');
+
+    function fmt(s) {
+      const m = Math.floor(s/60), sec = Math.floor(s%60);
+      return `${m}:${sec.toString().padStart(2,'0')}`;
+    }
+    function togglePlay() {
+      if (audio.src && !audio.paused) { audio.pause(); playBtn.textContent='▶'; }
+      else if (audio.src) { audio.play(); playBtn.textContent='⏸'; }
+      else { playBtn.textContent='▶'; } // no audio file yet
+    }
+    function seekBack() { if(audio.src) audio.currentTime = Math.max(0, audio.currentTime-10); }
+    function seekForward() { if(audio.src) audio.currentTime = Math.min(audio.duration||0, audio.currentTime+10); }
+    function toggleMute() {
+      audio.muted = !audio.muted;
+      document.getElementById('mute-btn').textContent = audio.muted ? '🔇' : '🔊';
+    }
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        progressFill.style.width = (audio.currentTime/audio.duration*100)+'%';
+        timeCurrent.textContent = fmt(audio.currentTime);
+      }
+    });
+    audio.addEventListener('loadedmetadata', () => { timeTotal.textContent = fmt(audio.duration); });
+    audio.addEventListener('ended', () => { playBtn.textContent='▶'; progressFill.style.width='0%'; });
+    progressTrack.addEventListener('click', e => {
+      if (!audio.duration) return;
+      const pct = e.offsetX / progressTrack.offsetWidth;
+      audio.currentTime = pct * audio.duration;
+    });
+
     // Size selector toggle
     document.querySelectorAll('.size-selector').forEach(sel => {
       sel.querySelectorAll('.size-btn').forEach(btn => {
