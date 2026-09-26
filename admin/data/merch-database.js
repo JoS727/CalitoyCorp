@@ -12,6 +12,14 @@ const BRANDS = {
     storeId: null, // Will be created
     colors: { primary: '#1a1a1a', accent: '#f4a261', text: '#ffffff' }
   },
+  calitoywildales: {
+    name: 'California Wild Ales',
+    tagline: 'Celebrate the Funk. Wild Fermented. Barrel Aged.',
+    audience: '21-45, craft beer enthusiasts, sour heads, San Diego locals',
+    aesthetic: 'Barrel house amber, wild funk, OB coastal grit, reclaimed wood',
+    storeId: null, // Test account — store to be created
+    colors: { primary: '#1a0f04', accent: '#f59e0b', text: '#f5f0e8' }
+  },
   kurced: {
     name: 'Kurced',
     tagline: 'Neon Goth. Digital Darkness.',
@@ -162,6 +170,88 @@ const CORE_PRODUCTS = [
 
 // 50 DESIGNS: 10 per brand
 const DESIGN_LIBRARY = {
+  calitoywildales: [
+    {
+      id: 'cwa-001',
+      name: 'Gose Loco Label',
+      prompt: 'Vintage tequila label meets OB surf punk, Hungarian oak barrel with agave and lime illustrations, amber and cream palette on black heavyweight cotton, hand-drawn sign painter style, photorealistic streetwear print',
+      placement: 'center-chest',
+      colors: ['black-shirt-amber-ink', 'cream-shirt-navy-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-002',
+      name: 'Fuzzy Peaches',
+      prompt: 'Juicy peach halves with bourbon vanilla bean and cinnamon stick, mixed-fermentation pastry sour poster art, warm amber glow, painterly craft beer label aesthetic, centered on heavy cotton tee',
+      placement: 'center-chest',
+      colors: ['black-shirt-peach-ink', 'white-shirt-amber-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-003',
+      name: 'Ozzy Oz-Orange',
+      prompt: 'Blood orange split to reveal sour beer interior, cherry accent, rock-poster energy, amber and crimson palette, distressed vintage band tee treatment',
+      placement: 'center-chest',
+      colors: ['black-shirt-crimson-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-004',
+      name: 'Midas Touch',
+      prompt: 'Golden sour pouring into a tulip glass, liquid gold foil effect, Brett saison haze, luxury-meets-funk composition, gold ink on black tee',
+      placement: 'center-chest',
+      colors: ['black-shirt-gold-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-005',
+      name: 'Barrelhouse Seal',
+      prompt: 'Circular brewery seal with oak barrel, wild yeast creatures, Ocean Beach pier silhouette, Where the Wild Things Are texture, cream and amber on navy',
+      placement: 'center-chest',
+      colors: ['navy-shirt-cream-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-006',
+      name: 'Wild Things of OB',
+      prompt: 'Painted wild creature holding a sour beer, reclaimed wood background texture, Ocean Beach street art style, warm amber glow, photorealistic print',
+      placement: 'back-print',
+      colors: ['black-shirt-multi-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-007',
+      name: '14 Mile West Coast',
+      prompt: 'Clean West Coast IPA typography with pine and citrus botanicals, crisp modern craft brewery style, kelly green and amber accents',
+      placement: 'left-chest',
+      colors: ['forest-shirt-cream-ink', 'black-shirt-amber-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-008',
+      name: 'Celebrate the Funk',
+      prompt: 'Stacked bold type CELEBRATE THE FUNK with Brettanomyces yeast cell patterns, barrel stave border, festival poster typography, amber glow on black',
+      placement: 'center-chest',
+      colors: ['black-shirt-amber-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-009',
+      name: '100 Barrels Deep',
+      prompt: 'Wall of oak barrels and foeders in perspective, moody barrelhouse lighting, amber and dark wood palette, photorealistic brewery scene',
+      placement: 'center-chest',
+      colors: ['brown-shirt-cream-ink'],
+      status: 'approved'
+    },
+    {
+      id: 'cwa-010',
+      name: 'Newport Ave Local',
+      prompt: 'OB pier at golden hour with a tulip glass silhouette, 92107 pin, laid-back coastal type, sand and teal on sand-colored tee',
+      placement: 'center-chest',
+      colors: ['sand-shirt-navy-ink'],
+      status: 'approved'
+    }
+  ],
   calitoy: [
     {
       id: 'cal-001',

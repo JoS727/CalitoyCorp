@@ -83,6 +83,23 @@ const BRANDS = {
       seagull: 'endof8_seagull.svg'
     }
   },
+  calitoywildales: {
+    name: 'California Wild Ales',
+    tagline: 'Celebrate the Funk. Wild Fermented. Barrel Aged.',
+    audience: '21-45, craft beer enthusiasts, sour heads, San Diego locals',
+    aesthetic: 'Barrel house amber, wild funk, OB coastal grit, reclaimed wood',
+    storeId: null,
+    colors: { primary: '#1a0f04', accent: '#f59e0b', text: '#f5f0e8', bg: '#0A0A0A' },
+    social: { instagram: '@californiawildales', tiktok: '@californiawildales', twitter: '@caliwildales', facebook: 'californiawildales', website: 'californiawildales.com' },
+    pillars: ['WILD FERMENTED', 'BARREL AGED', 'OCEAN BEACH BRED', 'BLEND WITH PATIENCE', 'CELEBRATE THE FUNK'],
+    logo: {
+      wordmark: 'calitoywildales_wordmark.svg',
+      barrel: 'calitoywildales_barrel.svg',
+      beast: 'calitoywildales_beast.svg'
+    },
+    testAccount: true,
+    testNotes: 'Founder-built test account — California Wild Ales, San Diego. Founded 2015 (Zack Brager, Bill DeWitt, Cameron Pyror). OB taproom 4896 Newport Ave · Barrelhouse 3826 Sherman St. Flagship pours: Gose Loco, Fuzzy Peaches, Ozzy Oz-Orange, Midas Touch, 14 Mile West Coast IPA.'
+  },
   calitoycorp: {
     name: 'CalitoyCorp',
     tagline: 'California Crafted. Globally Worn.',

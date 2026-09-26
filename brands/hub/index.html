@@ -98,12 +98,14 @@ nav {
   letter-spacing: 0.15em; padding: 0.15rem 0.5rem; border-radius: 3px; width: fit-content;
 }
 .badge-tarosyn   { color: var(--gold); background: rgba(74,29,150,0.4); }
+.badge-calitoywildales { color: #f59e0b; background: rgba(245,158,11,0.25); border: 1px solid rgba(245,158,11,0.4); }
 .badge-endof8    { color: var(--orange); background: rgba(234,88,12,0.25); }
 .badge-wickedyouth { color: var(--red); background: rgba(220,38,38,0.2); }
 
 .card-name { font-size: 0.95rem; font-weight: 700; color: var(--white); }
 .card-price { font-size: 1.15rem; font-weight: 700; }
 .price-tarosyn   { color: var(--gold); }
+.price-calitoywildales { color: #f59e0b; }
 .price-endof8    { color: var(--orange); }
 .price-wickedyouth { color: var(--red); }
 
@@ -118,6 +120,7 @@ nav {
 }
 .add-btn:hover { opacity: 0.85; }
 .btn-tarosyn   { background: var(--purple); }
+.btn-calitoywildales { background: #b45309; }
 .btn-endof8    { background: var(--orange); }
 .btn-wickedyouth { background: var(--red); }
 
@@ -181,6 +184,7 @@ footer strong { color: var(--gold); }
     <a class="brand-link bl-tarosyn" href="../tarosyn/index.html">✦ Tarosyn</a>
     <a class="brand-link bl-endof8" href="../endof8/index.html">🌊 Endof8</a>
     <a class="brand-link bl-wy" href="../wickedyouth/index.html">👑 Wicked Youth</a>
+    <a class="brand-link" href="../calitoywildales/index.html" style="color:#f59e0b;border-color:#b45309;background:rgba(245,158,11,0.12)">🛢️ California Wild Ales</a>
   </div>
 </section>
 
@@ -191,6 +195,7 @@ footer strong { color: var(--gold); }
   <button class="filter-btn" data-brand="tarosyn" onclick="filterBrand('tarosyn', this)">✦ Tarosyn</button>
   <button class="filter-btn" data-brand="endof8" onclick="filterBrand('endof8', this)">🌊 Endof8</button>
   <button class="filter-btn" data-brand="wickedyouth" onclick="filterBrand('wickedyouth', this)">👑 Wicked Youth</button>
+  <button class="filter-btn" data-brand="calitoywildales" onclick="filterBrand('calitoywildales', this)" style="border-color:#b45309;color:#f59e0b">🛢️ California Wild Ales</button>
 </div>
 
 <div class="grid-wrap">
@@ -218,6 +223,7 @@ footer strong { color: var(--gold); }
     <a href="../tarosyn/index.html" style="color:#d97706">✦ Tarosyn</a>
     <a href="../endof8/index.html" style="color:#ea580c">🌊 Endof8</a>
     <a href="../wickedyouth/index.html" style="color:#dc2626">👑 Wicked Youth</a>
+    <a href="../calitoywildales/index.html" style="color:#f59e0b">🛢️ California Wild Ales</a>
   </div>
 </footer>
 
@@ -257,9 +263,20 @@ const products = [
   { brand:"wickedyouth", name:"Wicked Beanie",      price:28, img:`${BASE}/Wicked_Youth/Brand_Color/WY_Circle.png` },
   { brand:"wickedyouth", name:"WY Tote",            price:24, img:`${BASE}/Wicked_Youth/Brand_Color/WY_Monogram.png` },
   { brand:"wickedyouth", name:"Crown Hoodie",       price:76, img:`${BASE}/Wicked_Youth/Brand_Color/Crown_Icon.png` },
+  // CALIFORNIA WILD ALES (test account)
+  { brand:"calitoywildales", name:"Gose Loco Tee",       price:34, img:"🛢️" },
+  { brand:"calitoywildales", name:"Fuzzy Peaches Tee",   price:34, img:"🍑" },
+  { brand:"calitoywildales", name:"Ozzy Oz-Orange Tee",  price:34, img:"🍊" },
+  { brand:"calitoywildales", name:"Midas Touch Tee",     price:38, img:"🏆" },
+  { brand:"calitoywildales", name:"100 Barrels Crewneck",price:62, img:"🛢️" },
+  { brand:"calitoywildales", name:"14 Mile Hat",         price:30, img:"🌱" },
+  { brand:"calitoywildales", name:"Wild Things Hoodie",  price:72, img:"🐻" },
+  { brand:"calitoywildales", name:"Funk Sticker Pack",   price:12, img:"✨" },
+  { brand:"calitoywildales", name:"Gose Loco Poster",    price:24, img:"🖼️" },
+  { brand:"calitoywildales", name:"Newport Ave Tee",     price:34, img:"🌅" },
 ];
 
-const brandLabels = { tarosyn:"Tarosyn", endof8:"Endof8", wickedyouth:"Wicked Youth" };
+const brandLabels = { tarosyn:"Tarosyn", endof8:"Endof8", wickedyouth:"Wicked Youth", calitoywildales:"California Wild Ales" };
 const sizes = ["S","M","L","XL","XXL"];
 let cart = [];
 
