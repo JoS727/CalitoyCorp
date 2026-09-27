@@ -61,6 +61,10 @@
       justify-content: center;
       font-size: 0.875rem;
     }
+    .cmark { color: var(--gold); font-weight: 700; }
+    .cmark-ra { display: inline-block; transform: rotate(180deg); }
+    .cmark-gold { color: var(--gold); }
+
     
     .nav {
       display: flex;
@@ -289,8 +293,7 @@
   <header class="header">
     <div class="header-content">
       <div class="logo">
-        <div class="logo-mark">CC</div>
-        <div>CALITOYCORP</div>
+        <div><span class="cmark">C</span><span class="cmark-ra">V</span>LITOY<span class="cmark-gold">CORP</span></div>
       </div>
       <nav class="nav">
         <a href="#brands">Brands</a>
@@ -440,8 +443,8 @@
 
       <div class="brand-card" onclick="window.location.href='brands/calitoywildales/'">
         <div class="brand-header endof8" style="background:linear-gradient(135deg,#1a0f04 0%,#3a2a12 100%);">
-          <div class="brand-logo-svg" style="display:flex;align-items:center;justify-content:center;">
-            <img src="assets/logos/Calitoy/calitoy-c-emblem.png" alt="Calitoy" width="80" height="80">
+          <div class="brand-logo-svg" style="display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:2.2rem;">
+            <span><span style="color:var(--gold)">C</span><span style="display:inline-block;transform:rotate(180deg);color:var(--gold)">A</span>LITOY</span>
           </div>
           <h3 class="brand-name">California Wild Ales</h3>
           <p class="brand-tagline">Celebrate the Funk. Wild Fermented. Barrel Aged.</p>
