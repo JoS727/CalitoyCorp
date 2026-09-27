@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalitoyCorp Merch Admin | Design Approval Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+    <title>CalitoyCorp Merch Admin | Design Approval Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -754,6 +755,43 @@
     }
   </style>
 </head>
+
+<!-- ACCESS GATE: CalitoyCore admin is invite-only during setup -->
+<div id="gateOverlay" style="position:fixed;inset:0;z-index:9999;background:#0a0a0f;display:flex;align-items:center;justify-content:center;">
+  <div style="max-width:420px;width:92%;background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;">
+    <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;"><span style="color:var(--accent)">C</span><span style="display:inline-block;transform:rotate(180deg)">V</span>LITOY<span style="opacity:.55">CORP</span></div>
+    <p style="font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:#888;margin-top:.4rem;">Merch Admin · Invite Phase</p>
+    <p style="font-size:.85rem;color:#aaa;line-height:1.6;margin:1.1rem 0;">The dashboard is closed while the platform is being set up. Leave your email to get your invite when your wave opens — first look, first access.</p>
+    <input id="gateEmail" type="email" placeholder="you@email.com" style="width:100%;background:#12121a;border:1px solid var(--border);border-radius:9px;color:#e8e8ef;padding:.75rem .9rem;font-size:.92rem;margin-bottom:.7rem;">
+    <button id="gateBtn" style="width:100%;background:var(--accent);border:none;color:#10100f;font-weight:800;padding:.75rem;border-radius:9px;font-size:.95rem;cursor:pointer;">Request Invite →</button>
+    <p id="gateDone" style="display:none;color:#4ade80;font-weight:700;font-size:.9rem;margin:.4rem 0 0;">✓ You're on the invite list.</p>
+    <p style="font-size:.66rem;color:#555;margin-top:.8rem;">One database across CALITOY — your email works everywhere.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='ccAdminGate';
+  function release(){ var o=document.getElementById('gateOverlay'); if(o) o.remove(); }
+  var email=sessionStorage.getItem(KEY);
+  var btn=document.getElementById('gateBtn');
+  function submit(){
+    var v=document.getElementById('gateEmail').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ document.getElementById('gateEmail').style.borderColor='#f87171'; return; }
+    btn.disabled=true; btn.textContent='Adding to list…';
+    fetch('https://email-capture.calitoy.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:v, source:'calitoycorp-admin-gate', name:'', phone:''})})
+      .catch(function(){}).finally(function(){
+        sessionStorage.setItem(KEY,v);
+        document.getElementById('gateDone').style.display='block';
+        btn.textContent='✓ On the list';
+        setTimeout(release, 900);
+      });
+  }
+  btn.addEventListener('click', submit);
+  document.getElementById('gateEmail').addEventListener('keydown', function(e){ if(e.key==='Enter') submit(); });
+  if(email) setTimeout(release, 150);
+})();
+</script>
 <body>
   <header class="header">
     <div class="header-content">
