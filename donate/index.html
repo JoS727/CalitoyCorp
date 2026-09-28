@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Donate to Joseph — CALITOY Agency</title>
+<meta name="description" content="Send Joseph an Amazon, Visa, or Apple gift card. No middlemen."/>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.1);
+    --fg: #ffffff;
+    --muted: rgba(255,255,255,0.5);
+    --accent: #c8a24a;
+    --accent-glow: rgba(200,162,74,0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100svh;
+  }
+  .font-display { font-family: 'DM Sans', system-ui, sans-serif; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    text-align: center;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1000 50%, #0a0a0a 100%);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(200,162,74,0.08) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(200,162,74,0.3);
+    background: rgba(200,162,74,0.08);
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 .gold {
+    background: linear-gradient(135deg, #d4a843 0%, #c8a24a 40%, #e0c060 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    max-width: 28rem;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2rem;
+  }
+
+  /* Donate section */
+  .donate {
+    position: relative;
+    background: var(--bg);
+    padding: 3rem 1rem;
+  }
+  .donate-inner {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+  .card {
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+  }
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .input {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: var(--fg);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+  }
+  .input::placeholder { color: rgba(255,255,255,0.3); }
+
+  /* Method buttons */
+  .methods {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .methods { grid-template-columns: 1fr 1fr; }
+  }
+  .method-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .method-btn:hover {
+    border-color: rgba(200,162,74,0.4);
+    background: rgba(200,162,74,0.06);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+  .method-btn .icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background: rgba(200,162,74,0.1);
+    margin-bottom: 0.25rem;
+  }
+  .method-btn .name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+  .method-btn .desc {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  /* Amount buttons */
+  .amounts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .amounts { grid-template-columns: repeat(4, 1fr); }
+  }
+  .amount-btn {
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    color: var(--fg);
+  }
+  .amount-btn:hover {
+    border-color: rgba(200,162,74,0.4);
+    background: rgba(200,162,74,0.06);
+  }
+  .amount-btn .val {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  /* CTA */
+  .cta {
+    margin-top: 1.5rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #c8a24a 0%, #a07828 100%);
+    padding: 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    text-align: center;
+  }
+  .cta:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 30px var(--accent-glow);
+  }
+
+  /* Steps */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  @media (min-width: 640px) {
+    .steps { grid-template-columns: repeat(3, 1fr); }
+  }
+  .step {
+    text-align: center;
+    padding: 1rem;
+  }
+  .step .num {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgba(200,162,74,0.15);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .step h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .step p {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  .footer p {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .footer .heart {
+    display: inline-flex;
+    height: 1rem;
+    width: 1rem;
+    fill: #ec4899;
+    color: #ec4899;
+    vertical-align: middle;
+    margin: 0 0.25rem;
+  }
+
+  /* Selected state */
+  .method-btn.selected {
+    border-color: var(--accent);
+    background: rgba(200,162,74,0.1);
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
+  .amount-btn.selected {
+    border-color: var(--accent);
+    background: rgba(200,162,74,0.15);
+  }
+</style>
+</head>
+<body>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path></svg>
+    Gift Cards Only
+  </div>
+  <h1>Donate to <span class="gold">Joseph</span></h1>
+  <p>Send an Amazon, Visa, or Apple gift card. No middlemen, no Nous portal detour — straight to Joseph.</p>
+</section>
+
+<!-- Donate -->
+<section class="donate">
+  <div class="donate-inner">
+    <div class="card">
+      <label class="label" for="name">Your name</label>
+      <input id="name" type="text" placeholder="e.g. Alex" autocomplete="name"/>
+
+      <label class="label" style="margin-top:1.5rem">How would you like to give?</label>
+      <div class="methods" id="methods">
+        <a href="https://www.amazon.com/gp/registry/wishlist/" target="_blank" rel="noopener noreferrer" class="method-btn selected" data-method="amazon">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          </div>
+          <div class="name">Amazon Gift Card</div>
+          <div class="desc">Text it to Joseph</div>
+        </a>
+        <a href="https://www.vanillagift.com/" target="_blank" rel="noopener noreferrer" class="method-btn" data-method="visa">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"></rect><line x1="1" x2="23" y1="10" y2="10"></line></svg>
+          </div>
+          <div class="name">Visa Gift Card</div>
+          <div class="desc">Text card details to Joseph</div>
+        </a>
+        <a href="https://www.apple.com/gift-cards/" target="_blank" rel="noopener noreferrer" class="method-btn" data-method="apple">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"></path><path d="M10 2c1 .5 2 2 2 5"></path></svg>
+          </div>
+          <div class="name">Apple Gift Card</div>
+          <div class="desc">Email to Joseph</div>
+        </a>
+      </div>
+
+      <label class="label" style="margin-top:1.5rem">Choose an amount</label>
+      <div class="amounts" id="amounts">
+        <button class="amount-btn" data-amount="40"><div class="val">$40</div></button>
+        <button class="amount-btn" data-amount="70"><div class="val">$70</div></button>
+        <button class="amount-btn" data-amount="100"><div class="val">$100</div></button>
+        <button class="amount-btn" data-amount="160"><div class="val">$160</div></button>
+        <button class="amount-btn" data-amount="250"><div class="val">$250</div></button>
+        <button class="amount-btn" data-amount="400"><div class="val">$400</div></button>
+        <button class="amount-btn" data-amount="700"><div class="val">$700</div></button>
+        <button class="amount-btn" data-amount="1000"><div class="val">$1,000</div></button>
+      </div>
+
+      <button class="cta" id="cta">Send Gift Card</button>
+      <p style="margin-top:0.75rem;text-align:center;font-size:0.8125rem;color:var(--muted)">Joseph receives it directly — no portal, no middleman</p>
+    </div>
+
+    <!-- Steps -->
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Pick a method &amp; amount</h3>
+        <p>Amazon, Visa, or Apple gift card</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Complete it</h3>
+        <p>Buy the card on the retailer</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Joseph gets it</h3>
+        <p>Delivered to his phone or email</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>Made with <svg class="heart" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg> for Joseph by his people</p>
+</footer>
+
+<script>
+  // Method selection
+  const methods = document.querySelectorAll('.method-btn');
+  methods.forEach(btn => {
+    btn.addEventListener('click', () => {
+      methods.forEach(m => m.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // Amount selection
+  let selectedAmount = null;
+  const amountBtns = document.querySelectorAll('.amount-btn');
+  amountBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      amountBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedAmount = btn.dataset.amount;
+    });
+  });
+
+  // CTA click — open selected gift card page
+  document.getElementById('cta').addEventListener('click', () => {
+    const method = document.querySelector('.method-btn.selected');
+    let href = 'https://www.amazon.com/gp/registry/wishlist/';
+    if (method) {
+      const m = method.dataset.method;
+      if (m === 'visa') href = 'https://www.visa.com/gift-cards';
+      else if (m === 'apple') href = 'https://www.apple.com/gift-cards/';
+      else href = 'https://www.amazon.com/gp/registry/wishlist/';
+    }
+    window.open(href, '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>
