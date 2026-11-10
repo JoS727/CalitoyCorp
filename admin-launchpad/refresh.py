@@ -2,7 +2,7 @@
 """Refresh admin launchpad inventory from repos the supplied GitHub token can see."""
 import datetime, json, os, pathlib, urllib.parse, urllib.request
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
+ROOT = pathlib.Path(__file__).resolve().parent
 DEST = ROOT / "inventory.json"
 TOKEN = os.environ["INVENTORY_GITHUB_TOKEN"]
 OWNER = os.getenv("INVENTORY_OWNER", "JoS727")
