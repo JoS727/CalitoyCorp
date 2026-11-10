@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy public storefronts to GitHub Pages
 
 on:
   push:
@@ -6,37 +6,32 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
-      
+      uses: actions/checkout@v4
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        
-    - name: Install dependencies
+        node-version: '22'
+    - name: Install HTML minifier
+      run: npm install -g html-minifier@4.0.0
+    - name: Build public files only
       run: |
-        npm install -g html-minifier
-        
-    - name: Build
-      run: |
-        echo "Building CalitoyCorp..."
-        # Minify HTML files for faster loading
-        find . -name "*.html" -not -path "./node_modules/*" -exec html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js -o {} {} \;
-        
-    - name: Deploy to GitHub Pages
+        set -eu
+        mkdir -p "$RUNNER_TEMP/calitoy-public"
+        rsync -a --exclude='.git/' --exclude='.github/' --exclude='node_modules/' --exclude='admin-launchpad/' --exclude='.env*' --exclude='.dev.vars*' ./ "$RUNNER_TEMP/calitoy-public/"
+        find "$RUNNER_TEMP/calitoy-public" -name '*.html' -exec html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js -o {} {} \;
+        test ! -e "$RUNNER_TEMP/calitoy-public/admin-launchpad"
+    - name: Deploy public storefronts
       uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
-        
-    - name: Verify deployment
-      run: |
-        echo "Deployment complete!"
-        echo "Site URL: https://jos727.github.io/CalitoyCorp/"
+        publish_dir: ${{ runner.temp }}/calitoy-public
+        keep_files: false

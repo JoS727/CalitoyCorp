@@ -1,0 +1,7 @@
+# Private inventory belongs in authenticated storage, never this public repository.
+inventory.json
+inventory*.json
+.env*
+.dev.vars*
+.wrangler/
+node_modules/
