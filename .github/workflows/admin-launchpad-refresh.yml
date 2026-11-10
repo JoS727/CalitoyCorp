@@ -1,13 +1,36 @@
-name: Admin inventory refresh - private storage setup required
+name: Refresh private master admin inventory
 on:
   workflow_dispatch:
+    inputs:
+      allow_inventory_shrink:
+        description: Allow an explicitly reviewed reduction in repository access
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0 8 * * *'
+      timezone: America/Los_Angeles
 permissions:
   contents: read
+concurrency:
+  group: private-admin-inventory
+  cancel-in-progress: false
 jobs:
-  private-storage-required:
+  refresh:
     runs-on: ubuntu-latest
+    environment: admin-inventory
     steps:
-      - name: Refuse to publish private repository metadata
-        run: |
-          echo '::error::Refresh is paused until authenticated private storage is connected. Never commit private repository inventory to this public repository or upload it as a public workflow artifact.'
-          exit 1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate sync logic
+        run: python3 -m unittest discover -s admin-launchpad/tests -p 'test_*.py'
+      - name: Refresh private KV snapshot (never commit or upload it)
+        env:
+          INVENTORY_GITHUB_TOKEN: ${{ secrets.INVENTORY_GITHUB_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.ADMIN_KV_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          ADMIN_KV_NAMESPACE_ID: ${{ vars.ADMIN_KV_NAMESPACE_ID }}
+          INVENTORY_OWNERS: JoS727
+          ALLOW_INVENTORY_SHRINK: ${{ inputs.allow_inventory_shrink && 'true' || 'false' }}
+        run: python3 admin-launchpad/refresh.py
