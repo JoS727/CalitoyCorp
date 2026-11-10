@@ -1,7 +1,8 @@
-# Private inventory belongs in authenticated storage, never this public repository.
-inventory.json
+# Private state and deployment configuration must never enter public Git.
 inventory*.json
 .env*
 .dev.vars*
+wrangler.local.*
 .wrangler/
 node_modules/
+__pycache__/
